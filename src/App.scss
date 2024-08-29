@@ -58,29 +58,6 @@ body {
 .main {
   margin-top: 2.5rem;
 }
-
-.inputField {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-
-  .area {
-    padding: 1.4rem;
-    height: 12rem;
-    background-color: #1e2a52;
-    border-radius: 20px;
-    border-color: #2e5b84;
-    color: #e3e8ef;
-    outline: none;
-  }
-
-  .description {
-    margin-top: 0.5rem;
-    font-size: 0.75rem;
-    color: #364153;
-  }
-}
-
 .setting {
   margin-top: 2rem;
   display: flex;
@@ -92,75 +69,6 @@ body {
     font-size: 1rem;
     color: #e3e8ef;
     font-weight: 300;
-  }
-  .voice {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 0.5rem 1rem;
-    background-color: #1e2a52;
-    border-radius: 10px;
-    gap: 0.5rem;
-    .voice-item {
-      color: #677489;
-      background-color: transparent;
-
-      &.name {
-        border-right: 1px solid #364153;
-        width: 80%;
-        font-size: 1.5rem;
-      }
-
-      &.select {
-        color: #e3e8ef;
-        border: none;
-        font-size: 1rem;
-        background-image: url('../assets/211687_down_arrow_icon.svg');
-        background-repeat: no-repeat;
-        background-position: right 10px center;
-        background-size: 20%;
-        appearance: none;
-        outline: none;
-      }
-      &.select:nth-child(2) {
-        border-right: 1px solid #364153;
-      }
-      &.select:nth-child(3) {
-        max-width: 6rem;
-      }
-    }
-  }
-  .speed {
-    display: flex;
-    padding: 0.5rem 1rem;
-    background-color: #1e2a52;
-    border-radius: 10px;
-    gap: 1rem;
-    align-items: center;
-    .name {
-      border-right: 1px solid #364153;
-      font-size: 1.5rem;
-      color: #677489;
-      background-color: transparent;
-      padding-right: 1.5rem;
-    }
-    .number {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      gap: 0.5rem;
-      color: #e3e8ef;
-      border: none;
-      span {
-        padding: 0.5rem;
-        border-radius: 10px;
-        cursor: pointer;
-      }
-      .active {
-        padding: 0.4rem;
-        background-color: #1c1b43;
-        border-radius: 10px;
-      }
-    }
   }
 }
 

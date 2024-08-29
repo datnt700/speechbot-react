@@ -1,0 +1,33 @@
+.speed {
+  display: flex;
+  padding: 0.5rem 1rem;
+  background-color: #1e2a52;
+  border-radius: 10px;
+  gap: 1rem;
+  align-items: center;
+  .name {
+    border-right: 1px solid #364153;
+    font-size: 1.5rem;
+    color: #677489;
+    background-color: transparent;
+    padding-right: 1.5rem;
+  }
+  .number {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    color: #e3e8ef;
+    border: none;
+    span {
+      padding: 0.5rem;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .active {
+      padding: 0.4rem;
+      background-color: #1c1b43;
+      border-radius: 10px;
+    }
+  }
+}

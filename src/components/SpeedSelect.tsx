@@ -1,3 +1,5 @@
+import styles from './SpeedSelect.module.scss';
+
 export const SpeedSelect = ({
   pitch,
   selectedPitch,
@@ -8,12 +10,12 @@ export const SpeedSelect = ({
   handlePitchSelection: (i: string) => void;
 }) => {
   return (
-    <div className="speed">
-      <span className="name">Speed</span>
-      <div className="number">
+    <div className={styles.speed}>
+      <span className={styles.name}>Speed</span>
+      <div className={styles.number}>
         {pitch.map((i) => (
           <span
-            className={selectedPitch === i ? 'active' : ''}
+            className={selectedPitch === i ? styles.active : ''}
             key={i}
             onClick={() => handlePitchSelection(i)}
           >
