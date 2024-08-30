@@ -2,8 +2,8 @@
   display: flex;
   padding: 0.5rem 1rem;
   background-color: #1e2a52;
-  border-radius: 10px;
-  gap: 1rem;
+  border-radius: 0.6rem;
+  gap: 16px;
   align-items: center;
   .name {
     border-right: 1px solid #364153;
@@ -16,18 +16,18 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    gap: 0.5rem;
+    gap: 8px;
     color: #e3e8ef;
     border: none;
     span {
       padding: 0.5rem;
-      border-radius: 10px;
+      border-radius: 0.6rem;
       cursor: pointer;
     }
     .active {
       padding: 0.4rem;
       background-color: #1c1b43;
-      border-radius: 10px;
+      border-radius: 0.6rem;
     }
   }
 }
