@@ -11,12 +11,6 @@ h4 {
   margin: 0;
 }
 
-::placeholder {
-  color: #677489;
-  font-size: 1rem;
-  font-weight: 800;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -78,7 +72,7 @@ body {
   border-radius: 10px;
   background: linear-gradient(to right, #6326a2, #263fa9);
   border: none;
-  margin-top: 1rem;
+  margin-top: 3rem;
   color: #e3e8ef;
   cursor: pointer;
 }

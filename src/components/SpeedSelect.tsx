@@ -1,14 +1,16 @@
 import styles from './SpeedSelect.module.scss';
 
+interface Props {
+  pitch: string[];
+  selectedPitch: string | null;
+  handlePitchSelection: (i: string) => void;
+}
+
 export const SpeedSelect = ({
   pitch,
   selectedPitch,
   handlePitchSelection,
-}: {
-  pitch: string[];
-  selectedPitch: string | null;
-  handlePitchSelection: (i: string) => void;
-}) => {
+}: Props) => {
   return (
     <div className={styles.speed}>
       <span className={styles.name}>Speed</span>

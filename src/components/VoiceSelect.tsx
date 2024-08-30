@@ -1,15 +1,13 @@
 import React from 'react';
 import styles from './VoiceSelect.module.scss';
 
-export const VoiceSelect = ({
-  voices,
-  handleLanguage,
-  handleName,
-}: {
+interface Props {
   voices: SpeechSynthesisVoice[] | null;
   handleLanguage: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   handleName: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-}) => {
+}
+
+export const VoiceSelect = ({ voices, handleLanguage, handleName }: Props) => {
   return (
     <div className={styles.voice}>
       <span className={`${styles['voice-item']} ${styles.name}`}>Voice</span>
