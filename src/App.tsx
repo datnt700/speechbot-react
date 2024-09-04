@@ -1,35 +1,104 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react';
+import './App.scss';
+import heroImage from './assets/hero-image-text-to-speech.png';
+import logo from './assets/text-to-speech-logo.svg';
+import { InputField } from './components/InputField';
+import { VoiceSelect } from './components/VoiceSelect';
+import { SpeedSelect } from './components/SpeedSelect';
+
+const pitch = ['0.5x', '0.75x', '1x', '1.5x'];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [text, setText] = useState<string>('');
+  const [language, setLanguage] = useState<string>('fr-FR');
+  const [name, setName] = useState<string>('Thomas');
+  const [selectedPitch, setSelectedPitch] = useState<string | null>(null);
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[] | null>(null);
+
+  const handleTextarea = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { value } = event.target;
+    setText(value);
+  };
+
+  const handleName = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setName(e.target.value);
+  };
+
+  const handleLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setLanguage(e.target.value);
+  };
+  const handlePitchSelection = (i: string) => {
+    setSelectedPitch(i);
+  };
+
+  const loadVoices = () => {
+    const synth = window.speechSynthesis;
+    const availableVoices = synth.getVoices();
+    if (availableVoices.length > 0) {
+      setVoices(availableVoices);
+    }
+  };
+  useEffect(() => {
+    loadVoices();
+
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+  }, []);
+
+  const handleClick = () => {
+    if (!text || !voices) return;
+
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(text);
+
+    const selectedVoice = voices?.find(
+      (voice) => voice.lang === language && voice.name === name
+    );
+    if (selectedVoice) {
+      utterance.voice = selectedVoice;
+    }
+
+    const pitchNumber = selectedPitch?.split('x');
+    if (pitchNumber) {
+      utterance.pitch = parseFloat(pitchNumber[0]);
+    }
+
+    synth.speak(utterance);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="container">
+      <section className="left-side">
+        <img className="hero-image" src={heroImage} alt="heroImage" />
+      </section>
+      <section className="right-side">
+        <div className="header">
+          <p className="name">Speechebot</p>
+          <img className="logo" src={logo} alt="logo" />
+        </div>
+        <div className="main">
+          <InputField clickFunction={handleTextarea} />
+          <div className="setting">
+            <h4 className="title">Setting</h4>
+            <VoiceSelect
+              voices={voices}
+              handleLanguage={handleLanguage}
+              handleName={handleName}
+            />
+            <SpeedSelect
+              pitch={pitch}
+              selectedPitch={selectedPitch}
+              handlePitchSelection={handlePitchSelection}
+            />
+          </div>
+          <button className="btn" onClick={handleClick}>
+            Text to Speech
+          </button>
+        </div>
+      </section>
+    </div>
+  );
 }
 
-export default App
+export default App;

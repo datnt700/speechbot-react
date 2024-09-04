@@ -1,0 +1,25 @@
+.inputField {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .area {
+    padding: 1.4rem;
+    height: 12rem;
+    background-color: #1e2a52;
+    border-radius: 1.4rem;
+    border-color: #2e5b84;
+    color: #e3e8ef;
+    outline: none;
+  }
+  ::placeholder {
+    color: #677489;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+  .description {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #364153;
+  }
+}
